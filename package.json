@@ -1,0 +1,25 @@
+{
+  "name": "new-app-2",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env PORT=3501 next dev",
+    "build": "cross-env PORT=3501 next build",
+    "start": "cross-env PORT=3501 next start",
+    "lint": "cross-env PORT=3501 eslint ."
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "24.7.2",
+    "@types/react": "19.2.2",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "cross-env": "latest",
+    "eslint": "latest",
+    "typescript": "latest"
+  }
+}
