@@ -1,5 +1,5 @@
 import React from 'react';
-import './globals.css';
+import '../styles/globals.css';
 import Header from '../components/Header';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
