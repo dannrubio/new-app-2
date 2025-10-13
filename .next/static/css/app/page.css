@@ -1,0 +1,24 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./src/styles/Main.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+.Main {
+    min-height: calc(100vh - 120px);
+    padding: 5px 5px;
+    display: flex;
+    /* align-items: first baseline;
+    justify-content: center; */
+    background: #fafafa;
+    color: #111;
+}
+
+.Main h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .Main h1 {
+        font-size: 2.5rem;
+    }
+}
+
