@@ -4,7 +4,7 @@ import { headerLinks } from '../data/links';
 
 const Header: React.FC = () => {
     return (
-        <header>
+        <header className="Header">
             <nav>
                 <ul>
                     {headerLinks.map((link) => (

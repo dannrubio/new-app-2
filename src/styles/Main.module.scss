@@ -1,0 +1,75 @@
+.Main {
+    min-height: calc(100vh); 
+    padding: 5px 5px;
+    display: flex;
+    /* align-items: first baseline;
+    justify-content: center; */
+    background: #fafafa;
+    /* background: #ff0000; */
+    color: #111;
+}
+
+.Main h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .Main h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.leftHandNav {
+    width: 20vw;
+    background: #e0e0e0;
+    opacity: 0.75;
+}
+
+.mainBody {
+    width: 80vw;
+    background: transparent;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+    @extend .font1EM;
+}
+
+span {
+    margin-right: 10px;
+}
+
+.font1EM {
+    font-size: 1em;
+}
+
+.font1point5EM {
+    font-size: 1.5em;
+}
+
+.font2EM {
+    font-size: 2em;
+}
+
+.font5EM {
+    font-size: 5em;
+}
+
+.font1REM {
+    font-size: 1rem;
+}
+
+.font1point5REM {
+    font-size: 1.5rem;
+}
+
+.font2REM {
+    font-size: 2rem;
+}
+
+.font5REM {
+    font-size: 5rem;
+}
+
+.topAligned {
+    vertical-align: top;
+    line-height: normal;
+}
