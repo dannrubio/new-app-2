@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/globals.module.scss';
+import '../styles/globals.scss';
 import Header from '../components/Header';
 import App from '../App';
 

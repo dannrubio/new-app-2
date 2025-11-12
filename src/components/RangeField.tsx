@@ -1,36 +1,51 @@
-import React from 'react';
+'use client';
+import React, { useState } from "react";
 
 interface RangeFieldProps {
-    min: number;
-    max: number;
+    title: string;
+    min?: number;
+    max?: number;
+    onChange?: (value: number) => void;
 }
 
-const RangeField: React.FC<RangeFieldProps> = ({ min = 2, max = 10 }) => {
+const RangeField: React.FC<RangeFieldProps> = ({ title, min = 2, max = 10, onChange }) => {
+    const safeMin = Math.min(min, max);
+    const safeMax = Math.max(min, max);
+
+    const [value, setValue] = useState(safeMin);
+
     const options = Array.from({ length: max - min + 1 }, (_, i) => min + i);
+
+    const handleChange = (v: number) => {
+        const newValue = Math.min(safeMax, Math.max(safeMin, v));
+        setValue(newValue);
+        onChange?.(newValue);
+    };
+
     return (
-        <div>
-            <div className="rangeField">
-                <input type="range" min={min} max={max} />
-                <select>
-                    {options.map((value) => (
-                        <option key={value} value={value}>
-                            {value}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                <span className='font1EM'>EM</span>
-                <span className='font1point5EM'>EM</span>
-                <span className='font2EM'>EM</span>
-                <span className='font5EM'>EM</span>
-            </div>
-            {/* <div>
-                <span className='topAligned font1REM'>EM</span>
-                <span className='topAligned font1point5REM'>EM</span>
-                <span className='topAligned font2REM'>EM</span>
-                <span className='topAligned font5REM'>EM</span>
-            </div> */}
+        <div className="rangeField">
+            <span className="label">
+                {title} 
+            </span>                            
+            {/* <span className="component">
+                <input 
+                    type="range" 
+                    min={safeMin} 
+                    max={safeMax}
+                    onChange={(e) => handleChange(Number(e.target.value))}
+                    value={value}
+                />
+            </span> */}
+            <select 
+                value={value} 
+                onChange={(e) => handleChange(Number(e.target.value))}
+            >
+                {options.map((v) => (
+                    <option key={v} value={v}>
+                        {v}
+                    </option>
+                ))}
+            </select>
         </div>
     );
 };
