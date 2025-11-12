@@ -1,0 +1,90 @@
+/* [project]/source/repo/new-app-2/src/styles/main.scss.css [app-client] (css) */
+.Main {
+  color: #111;
+  background: #fafafa;
+  min-height: 100vh;
+  padding: 5px;
+  display: flex;
+}
+
+.Main h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  .Main h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.leftHandNav {
+  opacity: .75;
+  background: #e0e0e0;
+  width: 20vw;
+}
+
+.mainBody {
+  background: none;
+  width: 80vw;
+}
+
+.input {
+  width: 20vw;
+  display: inline-block;
+}
+
+.output {
+  width: calc(80vw - 30px);
+  height: calc(100vh - 100px);
+  padding: 10px;
+}
+
+.topAligned, .input {
+  vertical-align: top;
+  line-height: normal;
+}
+
+.roundedBox, .input {
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin: 2px 0 0 2px;
+}
+
+.label {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.padding, .input {
+  padding: 10px;
+}
+
+.card {
+  color: #000;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-radius: 10px;
+  align-items: center;
+  min-width: 50px;
+  max-width: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  margin: 0 5px 5px 0;
+}
+
+.card:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #a0a0a0;
+  border-color: #f00000;
+  box-shadow: 2px 2px 5px #0000004d;
+}
+
+.flipped {
+  color: #fff;
+  background-color: #000;
+  border-color: red;
+}
+
+/*# sourceMappingURL=source_repo_new-app-2_src_styles_main_scss_css_bad6b30c._.single.css.map*/
