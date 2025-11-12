@@ -1,6 +1,7 @@
 {
   "name": "new-app-2",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "cross-env PORT=3501 next dev",
