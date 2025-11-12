@@ -12,8 +12,6 @@ const Main: React.FC = () => {
     return (
         <div>
             <main className="Main">
-                {/* <Header /> */}
-                {/* main content goes here */}
                 <div id="leftHandNav" className='leftHandNav' />
                 <div id="mainBody" className='mainBody'>
                     <div className="input">
@@ -21,20 +19,16 @@ const Main: React.FC = () => {
                         <RangeField min={2} max={10} title='Columns' onChange={(value) => setColumns(value)} />
                     </div>
                     <div className="output roundedBox topAligned padding">
-                        {/* <div><span className='label'>Rows:</span>{rows}</div>
-                        <div><span className='label'>Columns:</span>{columns}</div> */}
-                        <div className="cardGrid" 
-                            // style={{ gridTemplateRows: `repeat(${rows}, 1fr)`, gridTemplateColumns: `repeat(${columns}, 1fr)` }}
-                        > {
-                            Array.from({ length: rows }, (_, i) => (<div key={`row-${i}`}> {
-                                Array.from({ length: columns }, (_, j) => (<span key={`row-${i} col-${j}`}>
+                        <div className="cardGrid container"> 
+                            { Array.from({ length: rows }, (_, i) => (<div key={`row-${i}`}> 
+                                { Array.from({ length: columns }, (_, j) => (<span key={`row-${i} col-${j}`}>
                                     <Card 
                                         name={`row-${i} col-${j}`}
                                         value={`${i},${j}`}
                                      />
                                 </span>))
-                            }</div>))
-                        }
+                                } </div>))
+                            }
                         </div>
                     </div>
                 </div>

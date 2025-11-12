@@ -1,6 +1,6 @@
 // eslint.config.js (ESLint 9+)
 import js from "@eslint/js";
-import next from "eslint-config-next";
+import nextVitals from "eslint-config-next/core-web-vitals";
 import tseslint from "typescript-eslint";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -13,13 +13,13 @@ import prettierConfig from "eslint-config-prettier"; // flat-compatible
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
   js.configs.recommended,
-  ...next(), // Next.js flat config
+  ...nextVitals(), // Next.js Core Web Vitals rules
 
   // TypeScript
-  ...tseslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
 
   // React
-  react.configs.recommended,
+  react.configs.flat.recommended,
 
   // React Hooks (no official flat config; wire in plugin + rules)
   {
@@ -55,6 +55,13 @@ export default [
       "import/no-unresolved": "off",
       "react/react-in-jsx-scope": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
+  },
+
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parserOptions: { projectService: true },
     }
   },
 
