@@ -1,6 +1,5 @@
 // eslint.config.js (ESLint 9+)
 import js from "@eslint/js";
-import nextVitals from "eslint-config-next/core-web-vitals";
 import tseslint from "typescript-eslint";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -8,12 +7,23 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import importPlugin from "eslint-plugin-import";
 import unusedImports from "eslint-plugin-unused-imports";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import nextPlugin from "@next/eslint-plugin-next"; 
 import prettierConfig from "eslint-config-prettier"; // flat-compatible
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
   js.configs.recommended,
-  ...nextVitals(), // Next.js Core Web Vitals rules
+
+  // ✅ Next.js Core Web Vitals via plugin
+  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    plugins: {
+      "@next/next": nextPlugin
+    },
+    rules: {
+      ...nextPlugin.configs["core-web-vitals"].rules
+    }
+  },
 
   // TypeScript
   ...tseslint.configs.recommendedTypeChecked,
@@ -61,8 +71,7 @@ export default [
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
-      parserOptions: { projectService: true },
-    }
+      parserOptions: { projectService: true } // Correctly wrapped
   },
 
   // Prettier last to disable conflicting stylistic rules
