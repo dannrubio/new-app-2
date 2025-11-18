@@ -12,68 +12,70 @@ import prettierConfig from "eslint-config-prettier"; // flat-compatible
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
-  js.configs.recommended,
+    js.configs.recommended,
 
-  // ✅ Next.js Core Web Vitals via plugin
-  {
-    files: ["**/*.{js,jsx,ts,tsx}"],
-    plugins: {
-      "@next/next": nextPlugin
+    // ✅ Next.js Core Web Vitals via plugin
+    {
+        files: ["**/*.{js,jsx,ts,tsx}"],
+        plugins: {
+            "@next/next": nextPlugin
+        },
+        rules: {
+            ...nextPlugin.configs["core-web-vitals"].rules
+        }
     },
-    rules: {
-      ...nextPlugin.configs["core-web-vitals"].rules
-    }
-  },
 
-  // TypeScript
-  ...tseslint.configs.recommendedTypeChecked,
+    // TypeScript
+    ...tseslint.configs.recommendedTypeChecked,
 
-  // React
-  react.configs.flat.recommended,
+    // React
+    react.configs.flat.recommended,
 
-  // React Hooks (no official flat config; wire in plugin + rules)
-  {
-    plugins: { "react-hooks": reactHooks },
-    rules: {
-      ...reactHooks.configs?.recommended?.rules, // fallback if available
-      // If the line above is undefined in your plugin version, keep at least:
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn"
-    }
-  },
-
-  // a11y
-  jsxA11y.configs.recommended,
-
-  // import (recommended + TS)
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
-
-  // Your customizations
-  {
-    settings: { react: { version: "detect" } },
-    plugins: {
-      "unused-imports": unusedImports,
-      "simple-import-sort": simpleImportSort
+    // React Hooks (no official flat config; wire in plugin + rules)
+    {
+        plugins: { "react-hooks": reactHooks },
+        rules: {
+            ...reactHooks.configs?.recommended?.rules, // fallback if available
+            // If the line above is undefined in your plugin version, keep at least:
+            "react-hooks/rules-of-hooks": "error",
+            "react-hooks/exhaustive-deps": "warn"
+        }
     },
-    rules: {
-      "unused-imports/no-unused-imports": "warn",
-      "unused-imports/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
-      "simple-import-sort/imports": "warn",
-      "simple-import-sort/exports": "warn",
-      "import/order": "off",
-      "import/no-unresolved": "off",
-      "react/react-in-jsx-scope": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off"
-    }
-  },
 
-  {
-    files: ["**/*.ts", "**/*.tsx"],
-    languageOptions: {
-      parserOptions: { projectService: true } // Correctly wrapped
-  },
+    // a11y
+    jsxA11y.configs.recommended,
 
-  // Prettier last to disable conflicting stylistic rules
-  prettierConfig
+    // import (recommended + TS)
+    importPlugin.flatConfigs.recommended,
+    importPlugin.flatConfigs.typescript,
+
+    // Your customizations
+    {
+        settings: { react: { version: "detect" } },
+        plugins: {
+            "unused-imports": unusedImports,
+            "simple-import-sort": simpleImportSort
+        },
+        rules: {
+            "unused-imports/no-unused-imports": "warn",
+            "unused-imports/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+            "simple-import-sort/imports": "warn",
+            "simple-import-sort/exports": "warn",
+            "import/order": "off",
+            "import/no-unresolved": "off",
+            "react/react-in-jsx-scope": "off",
+            "@typescript-eslint/explicit-module-boundary-types": "off"
+        }
+    },
+    {
+        files: ["**/*.ts","**/*.tsx"],
+        languageOptions: {
+            parserOptions: { 
+                projectService: true, 
+            },
+        },
+    },
+
+    // Prettier last to disable conflicting stylistic rules
+    prettierConfig
 ];
