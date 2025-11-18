@@ -1,7 +1,6 @@
 'use client';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/main.scss';
-import Header from './Header';
 import RangeField from './RangeField';
 import Card from './Card';
 import Pictogram from './Pictogram';
@@ -10,7 +9,7 @@ import GridData, { GridCell } from '../utils/GridData';
 const Main: React.FC = () => {
     const [rows, setRows] = useState(1);
     const [columns, setColumns] = useState(1);
-    const [grid, setGrid] = useState<GridCell[][]>(() => GridData.generate(rows, columns));    
+    const [grid, setGrid] = useState<GridCell[][]>(() => GridData.generate(1,1));    
 
     useEffect(() => {
         setGrid(GridData.generate(rows, columns));
@@ -26,8 +25,8 @@ const Main: React.FC = () => {
                 <div id="leftHandNav" className='leftHandNav' />
                 <div id="mainBody" className='mainBody'>
                     <div className="input">
-                        <RangeField min={1} max={10} title='Rows' onChange={(value) => setRows(value)} />
-                        <RangeField min={1} max={10} title='Columns' onChange={(value) => setColumns(value)} />
+                        <RangeField min={1} max={10} title='Rows' onChange={(value) => setRows(Number(value))} />
+                        <RangeField min={1} max={10} title='Columns' onChange={(value) => setColumns(Number(value))} />
                     </div>
                     <div className="output roundedBox topAligned padding">
                         <div className="container cardGrid"> 
@@ -58,6 +57,26 @@ const Main: React.FC = () => {
                                     ))}
                                 </div>
                             ))}
+                        </div>
+                        <div className="container dataGrid">
+                            <table className="dataGridTable">
+                                <thead>
+                                    <tr>
+                                        <th>Coordinates</th>
+                                        <th>Is On</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {grid.map((row, i) => 
+                                        row.map((cell, j) => (
+                                            <tr key={`data-row-${i}-${j}`} className="gridDataRow">
+                                                <td>{cell.value}</td>
+                                                <td>{cell.on ? 1 : 0}</td>
+                                            </tr>
+                                        ))
+                                    )}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
