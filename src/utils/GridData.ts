@@ -1,7 +1,10 @@
+import { count } from "console";
+
 export interface GridCell {
     name: string;
     value: string;
     on: boolean;
+    count?: number;
 }
 
 export default class GridData {
@@ -11,6 +14,7 @@ export default class GridData {
                 name: `row-${i} col-${j}`,
                 value: `${i},${j}`,
                 on: false,
+                count: 0,
             }))
         );
     }
@@ -23,7 +27,7 @@ export default class GridData {
         return grid.map((row, i) =>
             row.map((cell, j) =>
                 i === rowIndex && j === colIndex
-                    ? { ...cell, on: !cell.on }
+                    ? { ...cell, on: !cell.on, count: (cell.count || 0) + 1 }
                     : cell
             )
         );

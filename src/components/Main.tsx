@@ -7,9 +7,9 @@ import Pictogram from './Pictogram';
 import GridData, { GridCell } from '../utils/GridData';
 
 const Main: React.FC = () => {
-    const [rows, setRows] = useState(1);
-    const [columns, setColumns] = useState(1);
-    const [grid, setGrid] = useState<GridCell[][]>(() => GridData.generate(1,1));    
+    const [rows, setRows] = useState(2);
+    const [columns, setColumns] = useState(2);
+    const [grid, setGrid] = useState<GridCell[][]>(() => GridData.generate(2,2));    
 
     useEffect(() => {
         setGrid(GridData.generate(rows, columns));
@@ -25,8 +25,8 @@ const Main: React.FC = () => {
                 <div id="leftHandNav" className='leftHandNav' />
                 <div id="mainBody" className='mainBody'>
                     <div className="input">
-                        <RangeField min={1} max={10} title='Rows' onChange={(value) => setRows(Number(value))} />
-                        <RangeField min={1} max={10} title='Columns' onChange={(value) => setColumns(Number(value))} />
+                        <RangeField min={2} max={10} title='Rows' onChange={(value) => setRows(Number(value))} />
+                        <RangeField min={2} max={10} title='Columns' onChange={(value) => setColumns(Number(value))} />
                     </div>
                     <div className="output roundedBox topAligned padding">
                         <div className="container cardGrid"> 
@@ -47,7 +47,7 @@ const Main: React.FC = () => {
                         </div>
                         <div className="container pictogramGrid"> 
                             {grid.map((row, i) => (
-                                <div key={`pict-row-${i}`}>
+                                <div key={`pict-row-${i}`} className="pictogramRow">
                                     {row.map(cell => (
                                         <span key={`pict-${cell.name}`}>
                                             <Pictogram 
