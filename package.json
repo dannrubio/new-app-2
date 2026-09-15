@@ -10,7 +10,7 @@
     "lint": "cross-env PORT=3501 eslint ."
   },
   "dependencies": {
-    "next": "latest",
+    "next": "15.5.8",
     "react": "latest",
     "react-color-palette": "^7.3.1",
     "react-dom": "latest"
