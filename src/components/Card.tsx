@@ -14,6 +14,7 @@ const Card: React.FC<CardDetailProps> = ({ name, value, on, onClick }) => {
     return (
         <button
             id={name}
+            type="button"
             className={`card ${on ? 'flipped' : ''}`} 
             onClick={onClick}
         >

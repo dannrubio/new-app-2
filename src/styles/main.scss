@@ -106,7 +106,8 @@
     align-items: center;
 }
 
-.card:hover {
+.card:hover,
+.card:focus-visible {
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     border-color: #000000;
@@ -129,11 +130,15 @@
 
 .pictogram {
     background-color: #ffffff;
-    border: 1px solid #000000;
+    border: 0.25px solid #000000;
     width: 20px;
     height: 20px;
     display: inline-block;
     box-sizing: unset;
+}
+
+.pictogramRow {
+    margin-bottom: -1px;
 }
 
 .darkened {

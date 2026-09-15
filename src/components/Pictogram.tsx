@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 
 interface PictogramProps {
     darkened: boolean;
+    tabIndex?: number;
 }
 
-const Pictogram: React.FC<PictogramProps> = ({ darkened }) => {
+const Pictogram: React.FC<PictogramProps> = ({ darkened, tabIndex }) => {
     const [flipped, setFlipped] = useState(false);
 
     return (
-        <span className={`pictogram ${darkened ? 'darkened' : ''}`}>&nbsp;</span>
+        <span tabIndex={tabIndex} className={`pictogram ${darkened ? 'darkened' : ''}`}>&nbsp;</span>
     );
 }
 

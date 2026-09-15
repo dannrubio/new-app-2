@@ -5,6 +5,7 @@ import RangeField from './RangeField';
 import Card from './Card';
 import Pictogram from './Pictogram';
 import GridData, { GridCell } from '../utils/GridData';
+import GridGraph from './GridGraph';
 
 const Main: React.FC = () => {
     const [rows, setRows] = useState(2);
@@ -50,7 +51,7 @@ const Main: React.FC = () => {
                                 <div key={`pict-row-${i}`} className="pictogramRow">
                                     {row.map(cell => (
                                         <span key={`pict-${cell.name}`}>
-                                            <Pictogram 
+                                            <Pictogram
                                                 darkened={cell.on}
                                             />
                                         </span>
@@ -77,6 +78,10 @@ const Main: React.FC = () => {
                                     )}
                                 </tbody>
                             </table>
+                        </div>
+                        <div className="container graphGrid">
+                            <h3>Click Heatmap (count vs coordinates)</h3>
+                            <GridGraph grid={grid} />
                         </div>
                     </div>
                 </div>
